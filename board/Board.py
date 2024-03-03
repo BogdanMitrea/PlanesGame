@@ -104,7 +104,7 @@ class Board:
                 del self.__planeheadcolumns[i]
                 if self.__sketchboard.getsymbol(row, col) is None:
                     self.__sketchboard.setsymbol(row, col, colored("x", "red"))
-                print("Head hit! You destroyed an enemy plane! ", self.__nrofplanes, " remaining")
+                # print("Head hit! You destroyed an enemy plane! ", self.__nrofplanes, " remaining")
                 if self.__nrofplanes == 0:
                     raise GameWonException()
                 return 3
@@ -113,7 +113,7 @@ class Board:
             if row == self.__planesrows[i] and col == self.__planescolumns[i]:
                 if self.__sketchboard.getsymbol(row, col) is None:
                     self.__sketchboard.setsymbol(row, col, colored("x", "yellow"))
-                print("You have hit the enemy plane! Not a head hit though.")
+                #print("You have hit the enemy plane! Not a head hit though.")
                 self.__lastguess = "hit"
                 self.__lastguessrow = row
                 self.__lastguesscol = col
@@ -124,7 +124,7 @@ class Board:
         self.__lastguesscol = col
         if self.__sketchboard.getsymbol(row, col) is None:
             self.__sketchboard.setsymbol(row, col, colored("x", "blue"))
-        print("Nothing but air.\n")
+        #print("Nothing but air.\n")
         return 1
 
     def aiguess(self, row, col):
@@ -137,7 +137,7 @@ class Board:
         It will print a message depending if a plane was hit or not or if the game is over
         """
         rownumber, letter = interpretnumbers(row, col)
-        print("The computer played ", str(letter) + str(rownumber))
+        # print("The computer played ", str(letter) + str(rownumber))
 
         for i in range(len(self.__planeheadrows) - 1, -1, -1):
             if row == self.__planeheadrows[i] and col == self.__planeheadcolumns[i]:
@@ -152,19 +152,19 @@ class Board:
 
                 del self.__planeheadrows[i]
                 del self.__planeheadcolumns[i]
-                print("Head hit! Your plane was destroyed, you have ", self.__nrofplanes, " remaining\n")
+                # print("Head hit! Your plane was destroyed, you have ", self.__nrofplanes, " remaining\n")
                 self.__lastguess = "air"
                 if self.__nrofplanes == 0:
                     raise GameLostException()
                 return 3
         for i in range(len(self.__planesrows)):
             if row == self.__planesrows[i] and col == self.__planescolumns[i]:
-                print("Your plane was hit!\n")
+                #print("Your plane was hit!\n")
                 self.__lastguess = "hit"
                 self.__lastguessrow = row
                 self.__lastguesscol = col
                 return 2
-        print("Nothing but air.\n")
+        #print("Nothing but air.\n")
         return 1
 
     def getplanerowsandcols(self):

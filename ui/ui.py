@@ -231,7 +231,6 @@ class Console:
                             self.__clicked_cells = [[False] * 10 for _ in range(10)]
                             self.__clicked_cells[cell[0] - 1][cell[1] - 1] = True
                             playerguess = "" + chr(ord('A') - 1 + cell[1]) + str(cell[0])
-                            print("Clicked cell:", chr(ord('A') - 1 + cell[1]) + str(cell[0]))
             if not done:
                 screen.fill((100, 100, 100))
                 screen.blit(background_image, (0, 0))
